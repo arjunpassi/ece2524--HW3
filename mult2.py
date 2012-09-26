@@ -16,9 +16,9 @@ index = 0
 
 parser = argparse.ArgumentParser(description='Process some numbers')
 
-parser.add_argument('--ignore_non_numeric', action='store_const',const=1,default=0)
+parser.add_argument('--ignore-non-numeric', action='store_const',const=1,default=0)
 
-parser.add_argument('--ignore_blank', action='store_const',const=1,default=0)
+parser.add_argument('--ignore-blank', action='store_const',const=1,default=0)
 
 parser.add_argument('input', nargs='*', type=str)
 
@@ -63,7 +63,6 @@ else:
 
     try:	
 	    while inputFlag == 1:
-	        inputNum = raw_input("Enter Number: ")
 	        number = float(inputNum)
 	        ans = ans * number
 	    
