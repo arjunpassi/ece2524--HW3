@@ -1,8 +1,8 @@
 # ECE 2524 Homework 3 Problem 2 Arjun Passi
 
-import argparse
-import sys
 import fileinput
+import sys
+import argparse
 
 
 ans=1
@@ -14,26 +14,25 @@ nonNumericFlag = 0
 count = 0
 index = 0
 
-fileArray = []
+parser = argparse.ArgumentParser(description='Process some numbers')
 
-while count < len(sys.argv):
-    if sys.argv[count] == "--ignore-blank":
-        blankFlag = 1
-    
-    elif sys.argv[count] == "--ignore-non-numeric":
-        nonNumericFlag = 1
-    
-    else:
-        fileArray.append(sys.argv[count])
-        index = index + 1
-    
-    count = count + 1
+parser.add_argument('--ignore_non_numeric', action='store_const',const=1,default=0)
 
-fileArray.pop(0)   
+parser.add_argument('--ignore_blank', action='store_const',const=1,default=0)
 
+parser.add_argument('input', nargs='*', type=str)
+
+args = parser.parse_args()
+
+
+if args.ignore_blank == 1 :
+	blankFlag = 1
+
+if args.ignore_non_numeric==1 :
+	nonNumericFlag =1
 if len(sys.argv) > 1:
    
-   for line in fileinput.input(fileArray):
+   for line in fileinput.input(args.input):
        try:
           str = line
           inputNum = float(line)                     
